@@ -24,7 +24,7 @@ class Convolute:
                     for y in range(-int((self.kernel_size-1)/2), int((self.kernel_size-1)/2) + 1):
                         val += padded_image[x + i][y + j]*self.kernel[x][y]
                 mod_image[i][j] = val
-        cv2.imwrite("{}.jpg".format(self.type),mod_image)
+        return mod_image
 
 if __name__ == "__main__":
     print("Choose from the following:\n IDENTITY \t EDGE_DETECTION1/2/3 \t BOX \t GAUSS_BLUR\n SHARPEN")
@@ -34,4 +34,5 @@ if __name__ == "__main__":
         exit()
 
     yo = Convolute("image.jpg", response)
-    yo.convolution()
+    mod_image = yo.convolution()
+    cv2.imwrite("{}.jpg".format(response), mod_image)
