@@ -22,7 +22,7 @@ class Convolute:
                 val = 0
                 for x in range(-1*int((self.kernel_size-1)/2), int((self.kernel_size-1)/2) + 1):
                     for y in range(-int((self.kernel_size-1)/2), int((self.kernel_size-1)/2) + 1):
-                        val += padded_image[x + i][y + j]*self.kernel[x][y]
+                        val += padded_image[x + i][y + j]*self.kernel[x+1][y+1]
                 mod_image[i][j] = val
         return mod_image
 
